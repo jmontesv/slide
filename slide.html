@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <style>
+       
+         #frame {
+         border:solid steelblue 2px ;    
+         border-left:solid steelblue 12px ;    
+         position: relative;
+         width: 700px;
+         margin: 0 auto; 
+        -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.34);
+        -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.34);
+        box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.34);
+        }
+        .descripcion {
+        border-bottom-style: solid;
+        border-bottom-width: 3 px;
+        border-bottom-color:steelblue;  
+        background-color:olivedrab;    
+        position: absolute;
+        left: 60%;
+        top: 35%;   
+        }  
+        div.descripcion p {
+        text-align: right;
+        font-family: Arial; 
+        }      
+
+        div.botones {
+
+        width: 6%;
+        margin-top: 5px;
+        margin-left:auto;
+        margin-right: auto;  
+        }
+
+        div.botones i {
+           color: steelblue;
+        }
+
+        </style>
+        
+        <script> 
+        var imagen;
+        var descripciones;
+        var i;
+        i = 0;
+        var imagen =  new Array("img1","img2","img3");
+        var descripciones = new Array("Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.",
+                                      "Parrafo descriptivo de la imagen 2.Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.Parrafo descriptivo de la imagen 1.",
+                                      "Parrafo descriptivo de la imagen 3.Parrafo descriptivo de la imagen 3.Parrafo descriptivo de la imagen 3.Parrafo descriptivo de la imagen 3.Parrafo descriptivo de la imagen 3.")           
+        function slide() { 
+        crearslide();    
+        setInterval(crearslide,3000)    
+        function crearslide(){
+         i = (i >= imagen.length) ? 0 : i;   
+         document.getElementsByClassName("botones")[0].innerHTML = "";   
+         for (z=0;z<=imagen.length-1;z++) {
+             if (i == z){
+             document.getElementsByClassName("botones")[0].innerHTML += "<i class='fas fa-circle'></i>";    
+             }else{
+             document.getElementsByClassName("botones")[0].innerHTML += "<i class='far fa-circle'></i>";    
+             } 
+         }      
+         document.getElementsByTagName("div")[0].innerHTML = "<img src='./img/" +
+         imagen[i] + ".jpg"
+         + "'" + "width='700px' height='250px'><span><div class='descripcion'>" + "<p>" + descripciones[i] + "</p>"+ "</div></span>"; 
+         i++
+        }
+        }          
+        </script>
+        <title>Slide con JS</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+    <body onload="slide()">
+        <div id="frame">
+        </div>
+        <div class="botones">
+        </div>
+    </body>
+</html>     
